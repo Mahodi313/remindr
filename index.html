@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="Styles/home-styles.css" />
+    <title>Remindr</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="nav-logo">Remindr</h1>
+        <ul class="nav-menu">
+          <li>
+            <a href="mailto:MehdiAli15@outlook.com">
+              <i
+                class="fa-solid fa-envelope fa-beat fa-xl"
+                style="color: #fafafa"
+              ></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <header>
+      <div class="header-container">
+        <div class="date-container">
+          <h1>April, 2024</h1>
+        </div>
+        <div class="add-task-container">
+          <button class="add-task-btn" onclick="location.href='add-task.html';">
+            Add task <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <hr />
+    </header>
+    <main>
+      <div class="main-container">
+        <div class="tasks-container">
+          <h1 class="task-header">Tasks</h1>
+          <div class="task">
+            <div class="task-details">
+              <p class="task-title">Todo title</p>
+              <div class="task-info">
+                <span class="task-date"
+                  ><i class="fa-solid fa-calendar-days fa-xs"></i>
+                  2024-04-24</span
+                >
+                <span class="task-priority">Priority: High</span>
+              </div>
+            </div>
+            <div class="task-actions">
+              <div class="task-options">
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+              <label class="custom-checkbox">
+                <input class="isDone-chkbox" type="checkbox" />
+              </label>
+            </div>
+          </div>
+          <div class="task">
+            <div class="task-details">
+              <p class="task-title">Todo title</p>
+              <div class="task-info">
+                <span class="task-date"
+                  ><i class="fa-solid fa-calendar-days fa-xs"></i>
+                  2024-04-24</span
+                >
+                <span class="task-priority">Priority: High</span>
+              </div>
+            </div>
+            <div class="task-actions">
+              <div class="task-options">
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+              <label class="custom-checkbox">
+                <input class="isDone-chkbox" type="checkbox" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="completed-tasks-container">
+        <h2>Completed Tasks</h2>
+        <div class="completed-task">
+          <p class="completed-task-title">Todo title</p>
+          <span class="completed-task-date"
+            ><i class="fa-solid fa-calendar-days fa-lg"> </i> 2024-04-24</span
+          >
+        </div>
+        <div class="completed-task">
+          <p class="completed-task-title">Todo title</p>
+          <span class="completed-task-date"
+            ><i class="fa-solid fa-calendar-days fa-lg"> </i> 2024-04-24</span
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
