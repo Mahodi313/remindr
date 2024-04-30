@@ -141,10 +141,6 @@ hr {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
 }
 
-.task:hover {
-  transform: scale(1.02);
-}
-
 .task-details p {
   margin: 0;
   font-weight: bold;
@@ -171,19 +167,61 @@ hr {
   font-weight: bold;
 }
 
-.task-options {
+.collapsible {
+  border: none;
+  background-color: transparent;
   color: #31315b;
   cursor: pointer;
   margin-right: 15px;
+  font-size: 30px;
 }
 
-.task-options i {
-  font-size: 30px;
+.collapsible:hover {
+  opacity: 0.7;
+}
+
+.collapsible-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  right: 10%;
+  width: 150px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.collapsible-content ul {
+  list-style: none;
+}
+
+.collapsible-content ul li:not(:last-child) {
+  border-bottom: 2px solid #e1e1e1;
+}
+
+.collapsible-content ul li button {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #31315b;
+  height: 50px;
+  font-weight: bold;
+}
+
+.collapsible-content ul li button:hover {
+  background-color: #e1e1e1;
+  outline: none;
 }
 
 .task-actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .custom-checkbox {
@@ -206,10 +244,13 @@ footer {
 .completed-tasks-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
-.completed-tasks-container h2 {
+footer h2 {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
   font-size: 24px;
   color: #31315b;
   padding-bottom: 10px;
@@ -235,7 +276,7 @@ footer {
 
 .completed-task-title {
   font-size: 16px;
-  color: #000;
+  color: #757575;
   margin: 0;
 }
 
