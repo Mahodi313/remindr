@@ -1,7 +1,6 @@
 const todoTitleAdd = document.querySelector(".todo-title");
 const todoDateAdd = document.querySelector(".todo-date");
 const todoPriorityAdd = document.querySelector(".todo-priority");
-const todoAddBtn = document.querySelector(".create-task-btn");
 
 const addForm = document.querySelector(".add-todo-form");
 
