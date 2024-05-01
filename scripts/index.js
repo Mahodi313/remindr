@@ -106,17 +106,19 @@ let refresh = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  let coll = document.querySelectorAll(".collapsible");
-  coll.forEach(function (elem) {
-    elem.addEventListener("click", function () {
-      let content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
+  document
+    .querySelector(".tasks-container")
+    .addEventListener("click", function (event) {
+      if (event.target.closest(".collapsible")) {
+        let collapsible = event.target.closest(".collapsible");
+        let content = collapsible.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
       }
     });
-  });
 });
 
 let deleteTodo = (id) => {
