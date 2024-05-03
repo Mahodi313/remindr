@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "id": "sk2fxpc9y",
+      "title": "Test1",
+      "date": "2024-05-23",
+      "priority": "medium",
+      "isCompleted": true
+    },
+    {
+      "id": "2wb7yi90e",
+      "title": "Test2",
+      "date": "2024-05-09",
+      "priority": "low",
+      "isCompleted": false
+    }
+  ]
+}

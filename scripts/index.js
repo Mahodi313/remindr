@@ -7,10 +7,19 @@ const taskList = document.querySelector("#task-list");
 
 // Functions
 let getTodos = () => {
-  let todosJSON = localStorage.getItem("todos");
-  let todos = JSON.parse(todosJSON) || [];
-
-  return todos;
+  return fetch("http://localhost:3000/todos")
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        return data;
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching todos:", error);
+      return [];
+    });
 };
 
 let displayTodos = (todos) => {
@@ -64,45 +73,40 @@ let displayTodos = (todos) => {
   } else {
     todoCompletedList.innerHTML = "<p>No completed tasks yet.</p>";
   }
+
+  document.querySelectorAll(".isDone-chkbox").forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      completeTodo(checkbox.id);
+    });
+  });
 };
 
-displayTodos(getTodos());
+let showTodos = () => {
+  getTodos()
+    .then((todos) => {
+      displayTodos(todos);
+    })
+    .catch((error) => {
+      console.error("Failed to fetch todos: ", error);
+    });
+};
+
+showTodos();
 
 let completeTodo = (id) => {
-  let listTodos = getTodos();
-  let specificTodo = listTodos.find((todo) => todo.id === id);
-  specificTodo.isCompleted = true;
-  listTodos = listTodos.filter((todo) => todo.id !== specificTodo.id);
-  listTodos = [...listTodos, specificTodo];
-  let todosJSON = JSON.stringify(listTodos);
-
-  localStorage.setItem("todos", todosJSON);
-};
-
-document.querySelectorAll(".isDone-chkbox").forEach((checkbox) => {
-  checkbox.addEventListener("change", () => {
-    completeTodo(checkbox.id);
-    refresh();
-  });
-});
-
-let refresh = () => {
-  let countOfTasks = todoList.children.length;
-  let countOfCompletedTasks = todoCompletedList.children.length;
-
-  if (countOfTasks > 0) {
-    document
-      .querySelectorAll(".tasks-container .task")
-      .forEach((el) => el.remove());
-  }
-
-  if (countOfCompletedTasks > 0) {
-    document
-      .querySelectorAll(".completed-tasks-container .completed-task")
-      .forEach((el) => el.remove());
-  }
-
-  displayTodos(getTodos());
+  getTodos()
+    .then((todos) => {
+      let specificTodo = todos.find((todo) => todo.id === id);
+      specificTodo.isCompleted = true;
+      if (specificTodo) {
+        fetch(`http://localhost:3000/todos/${id}`, {
+          method: "PUT",
+          body: JSON.stringify(specificTodo),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
+        });
+      }
+    })
+    .catch((error) => console.error("Error fetching todos:", error));
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -122,10 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 let deleteTodo = (id) => {
-  let listTodos = getTodos();
-  let updatedTodos = listTodos.filter((todo) => todo.id !== id);
-  localStorage.setItem("todos", JSON.stringify(updatedTodos));
-  refresh();
+  fetch(`http://localhost:3000/todos/${id}`, {
+    method: "DELETE",
+  });
 };
 
 // For real time date

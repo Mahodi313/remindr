@@ -25,13 +25,11 @@ function onSubmitForm(e) {
 }
 
 let addTodoItem = (todo) => {
-  let todosJSON = localStorage.getItem("todos");
-  let todos = JSON.parse(todosJSON) || [];
-
-  todos = [...todos, todo];
-  todosJSON = JSON.stringify(todos);
-
-  localStorage.setItem("todos", todosJSON);
+  fetch("http://localhost:3000/todos", {
+    method: "POST",
+    body: JSON.stringify(todo),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  });
 };
 
 let cleanForm = () => {
